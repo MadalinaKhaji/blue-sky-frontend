@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserManagementModule } from './user-management/user-management.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,10 +15,10 @@ import { DashboardModule } from './dashboard/dashboard.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserManagementModule,
     NgbModule,
     SharedModule,
     DashboardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
