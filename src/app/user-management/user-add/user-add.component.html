@@ -1,3 +1,17 @@
-<p>
-  user-add works!
-</p>
+<div class="container mt-3">
+  <h2>Add user</h2>
+
+  <form [formGroup]="addUserForm">
+    <div class="form-group w-50">
+      <label for="name">Name: </label>
+      <input id="name" type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="form-group w-50">
+      <label for="email">Email: </label>
+      <input id="email" type="email" class="form-control" formControlName="email">
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="addUser()"> Add </button>
+  </form>
+
+</div>
