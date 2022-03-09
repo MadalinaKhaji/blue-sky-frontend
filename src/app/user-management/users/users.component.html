@@ -16,8 +16,8 @@
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
       <td>
-        <a routerLink="/user-mgmt/user-edit">Edit</a> | 
-        <a (click)="deleteUser(user.id)">Delete</a>
+        <a [routerLink]="['/user-mgmt/user-edit', user.id]"> Edit </a> | 
+        <a (click)="deleteUser(user.id)"> Delete </a>
       </td>
     </tr>
   </tbody>

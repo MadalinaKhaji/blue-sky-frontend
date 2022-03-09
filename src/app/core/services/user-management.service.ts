@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
 })
 export class UserManagementService {
 
-  private apiUrl = 'http://localhost:8081/api/user';
+  private apiUrl = 'api/user';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,8 +16,16 @@ export class UserManagementService {
     return this.httpClient.get<User[]>(`${this.apiUrl}/all`);
   }
 
+  public getUser(id): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/${id}`);
+  }
+
   public addUser(user): Observable<any> {
     return this.httpClient.post(this.apiUrl, user);
+  }
+
+  public editUser(user): Observable<any> {
+    return this.httpClient.put(this.apiUrl, user);
   }
 
 }
