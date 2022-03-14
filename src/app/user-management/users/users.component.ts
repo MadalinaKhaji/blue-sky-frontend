@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserManagementService } from 'src/app/core/services/user-management.service';
 import { User } from '../../core/models/user.model';
 
@@ -11,7 +12,7 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
 
-  constructor(private userManagementService: UserManagementService) { }
+  constructor(private userManagementService: UserManagementService, private router: Router) { }
 
   ngOnInit() {
     this.userManagementService.getAllUsers().subscribe(result => {
@@ -21,8 +22,18 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  addUser() {
+    this.router.navigateByUrl('/user-mgmt/user-add');
+  }
+
   deleteUser(id: number) {
     console.log('user id', id);
+
+    this.userManagementService.deleteUser(id).subscribe(result => {
+      console.log(result);
+
+      this.users = this.users.filter(user => user.id !== id);
+    });
   }
 
 }
