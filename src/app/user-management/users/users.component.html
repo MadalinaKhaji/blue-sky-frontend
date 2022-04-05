@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center my-3">
   <h4>Users</h4>
-  <button type="button" class="btn btn-primary" (click)="addUser()">Add User</button>
+  <button type="button" class="btn btn-primary" (click)="addUser()"><i class="fa fa-plus"></i> Add User </button>
 </div>
 
 <table class="table">
@@ -11,14 +11,19 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="users.length">
     <tr *ngFor="let user of users">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
       <td>
-        <a [routerLink]="['/user-mgmt/user-edit', user.id]"> Edit </a> | 
-        <a (click)="deleteUser(user.id)"> Delete </a>
+        <a class="mr-1" [routerLink]="['/user-mgmt/user-edit', user.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a class="delete-button" (click)="deleteUser(user.id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
       </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="!users.length">
+    <tr>
+      <td>No users found.</td>
     </tr>
   </tbody>
 </table>
